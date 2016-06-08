@@ -591,7 +591,7 @@ def download_ruleset():
 
     download_file(url_ruleset, output)
 
-    old_extracted_files = "{0}/ossec-rules-master/".format(downloads_directory)
+    old_extracted_files = "{0}/ossec-rules-tvx-rules/".format(downloads_directory)
     if os.path.exists(old_extracted_files):
         shutil.rmtree(old_extracted_files)
 
@@ -603,9 +603,9 @@ def download_ruleset():
         sys.exit(2)
 
     # Update main directory
-    shutil.copyfile("{0}/ossec-rules-master/VERSION".format(downloads_directory), version_path)
+    shutil.copyfile("{0}/ossec-rules-tvx-rules/VERSION".format(downloads_directory), version_path)
 
-    new_python_script = "{0}/ossec-rules-master/ossec_ruleset.py".format(downloads_directory)
+    new_python_script = "{0}/ossec-rules-tvx-rules/ossec_ruleset.py".format(downloads_directory)
     if os.path.isfile(new_python_script):
         shutil.copyfile(new_python_script, script_path)
 
@@ -619,7 +619,7 @@ def copy_ruleset(directory):
         logger.log("Error - Directory doest not exist: '{0}'.\nExit.".format(directory))
         sys.exit(2)
 
-    old_extracted_files = "{0}/ossec-rules-master/".format(downloads_directory)
+    old_extracted_files = "{0}/ossec-rules-tvx-rules/".format(downloads_directory)
     if os.path.exists(old_extracted_files):
         shutil.rmtree(old_extracted_files)
 
@@ -632,14 +632,14 @@ def copy_ruleset(directory):
     # Check new ruleset
     check_files = ["rootcheck", "rules-decoders", "VERSION"]
     for cf in check_files:
-        if not os.path.exists("{0}/ossec-rules-master/{1}".format(downloads_directory, cf)):
+        if not os.path.exists("{0}/ossec-rules-tvx-rules/{1}".format(downloads_directory, cf)):
             logger.log("Error - '{0}' doest not exist at '{1}'.\nExit.".format(cf, directory))
             sys.exit(2)
 
     # Update main directory
-    shutil.copyfile("{0}/ossec-rules-master/VERSION".format(downloads_directory), version_path)
+    shutil.copyfile("{0}/ossec-rules-tvx-rules/VERSION".format(downloads_directory), version_path)
 
-    new_python_script = "{0}/ossec-rules-master/ossec_ruleset.py".format(downloads_directory)
+    new_python_script = "{0}/ossec-rules-tvx-rules/ossec_ruleset.py".format(downloads_directory)
     if os.path.isfile(new_python_script):
         shutil.copyfile(new_python_script, script_path)
 
@@ -1067,7 +1067,7 @@ Configuration file syntax using option -A:
 if __name__ == "__main__":
     # Config
     MAX_BACKUPS = 50
-    url_ruleset = "https://github.com/chrisdpa-tvx/ossec-rules/archive/master.zip"
+    url_ruleset = "https://github.com/chrisdpa-tvx/ossec-rules/archive/tvx-rules.zip"
     ossec_path = "/var/ossec"
     ossec_conf = "{0}/etc/ossec.conf".format(ossec_path)
     updater_path = "{0}/update/ruleset".format(ossec_path)
@@ -1076,8 +1076,8 @@ if __name__ == "__main__":
     version_path = "{0}/VERSION".format(updater_path)
     script_path = "{0}/ossec_ruleset.py".format(updater_path)
     downloads_directory = "{0}/downloads".format(updater_path)
-    new_rules_path = "{0}/ossec-rules-master/rules-decoders".format(downloads_directory)
-    new_rootchecks_path = "{0}/ossec-rules-master/rootcheck".format(downloads_directory)
+    new_rules_path = "{0}/ossec-rules-tvx-rules/rules-decoders".format(downloads_directory)
+    new_rootchecks_path = "{0}/ossec-rules-tvx-rules/rootcheck".format(downloads_directory)
 
     # Vars
     today_date = date.today().strftime('%Y%m%d')
